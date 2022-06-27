@@ -8,8 +8,7 @@ import lombok.Data;
  * @time 17:30
  */
 @Data
-public class LoginDto {
-    private String name;
-    private String phone;
-    private String password;
+public class PageCustodyDto {
+    private Integer pageNo = 1;
+    private Integer pageSize = 10;
 }

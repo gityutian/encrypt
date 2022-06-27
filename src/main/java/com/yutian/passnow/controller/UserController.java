@@ -2,6 +2,7 @@ package com.yutian.passnow.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
+import com.yutian.passnow.dto.GenerateCustomKeyDto;
 import com.yutian.passnow.dto.LoginDto;
 import com.yutian.passnow.dto.UserDto;
 import com.yutian.passnow.entity.User;
@@ -77,7 +78,7 @@ public class UserController {
     }
 
     @PostMapping("generateSecret")
-    public String generateSecret(@RequestBody String customKey){
+    public String generateSecret(@RequestBody GenerateCustomKeyDto generateCustomKeyDto){
         HttpSession session = ((ServletRequestAttributes) RequestContextHolder
                 .getRequestAttributes()).getRequest().getSession();
         UserVo userVo = (UserVo) session.getAttribute(session.getId());
@@ -95,7 +96,7 @@ public class UserController {
                 userSecret.setCreateTime(new Date());
                 userSecret.setPublicKey(rsaKeyPair.getPublicKey());
                 userSecret.setPrivateKey(rsaKeyPair.getPrivateKey());
-                userSecret.setCustomKey(customKey);
+                userSecret.setCustomKey(generateCustomKeyDto.getCustomKey());
                 userSecretMapper.insert(userSecret);
             }
         } catch (NoSuchAlgorithmException e) {

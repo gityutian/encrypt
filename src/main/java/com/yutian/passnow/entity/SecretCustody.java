@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @author FSX
+ * @author yutian
  * @date 2022/6/20
  * @time 17:30
  */
@@ -14,7 +14,7 @@ import java.util.Date;
 public class SecretCustody {
     @TableId
     private Long id;
-    private String userId;
+    private Long userId;
     private String name;
     private String url;
     private String account;

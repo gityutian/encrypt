@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 
 /**
  * @author yutian
@@ -12,12 +11,23 @@ import java.util.Date;
  * @time 17:30
  */
 @Data
-public class UserDto {
+public class SecretCustodyDto {
+    /**
+     * 是否随机密码
+     */
+    @NotNull
+    private Integer randomPassword;
+    /**
+     * 随机密码长度
+     */
+    private Integer length;
     @NotBlank
     private String name;
     @NotBlank
-    private String phone;
-    private String email;
+    private String url;
+    @NotBlank
+    private String account;
     @NotBlank
     private String password;
+    private String remark;
 }
